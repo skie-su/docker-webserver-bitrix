@@ -1,0 +1,14 @@
+[mysqld]
+innodb-log-file-buffering=ON
+innodb-data-file-buffering=ON
+innodb-log-file-write-through=OFF
+innodb_data_file_write_through=OFF
+
+innodb-use-native-aio=OFF
+innodb_flush_log_at_trx_commit=2
+innodb-buffer-pool-size=1073741824
+
+transaction-isolation=READ-COMMITTED
+thread_cache_size=16
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
