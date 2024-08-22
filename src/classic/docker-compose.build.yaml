@@ -1,0 +1,55 @@
+services:
+  php:
+    env_file:
+      - "../../.env"
+    build:
+      context: ../../
+      args:
+        - SERVER_USER=${SERVER_USER}
+        - SERVER_USER_UID=${SERVER_USER_UID}
+        - SERVER_GROUP=${SERVER_GROUP}
+        - SERVER_GROUP_GID=${SERVER_GROUP_GID}
+      dockerfile: ./src/classic/php/Dockerfile
+    image: wsb_php_classic
+
+  db:
+    env_file:
+      - "../../.env"
+    build:
+      context: ../../
+      dockerfile: ./src/classic/db/Dockerfile
+    image: wsb_db
+
+  phpmyadmin:
+    env_file:
+      - "../../.env"
+    build:
+      context: ../../
+      args:
+        - SERVER_USER=${SERVER_USER}
+        - SERVER_USER_UID=${SERVER_USER_UID}
+        - SERVER_GROUP=${SERVER_GROUP}
+        - SERVER_GROUP_GID=${SERVER_GROUP_GID}
+      dockerfile: ./src/classic/phpmyadmin/Dockerfile
+    image: wsb_pma_classic
+
+  nginx:
+    env_file:
+      - "../../.env"
+    build:
+      context: ../../
+      args:
+        - SERVER_USER=${SERVER_USER}
+        - SERVER_USER_UID=${SERVER_USER_UID}
+        - SERVER_GROUP=${SERVER_GROUP}
+        - SERVER_GROUP_GID=${SERVER_GROUP_GID}
+      dockerfile: ./src/classic/nginx/Dockerfile
+    image: wsb_nginx_classic
+
+  redis:
+    env_file:
+      - "../../.env"
+    build:
+      context: ../../
+      dockerfile: ./src/classic/redis/Dockerfile
+    image: wsb_redis
